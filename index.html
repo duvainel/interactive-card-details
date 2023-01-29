@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive card details form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="container">
+      <div class="container-card">
+        <div class="container-card-front">
+          <div class="card-logo">
+            <img src="images/card-logo.svg" alt="card-logo">
+          </div>
+          <span id="outputCardNumber">0000 0000 0000 0000</span>
+          <span id="outputCardName">Jane Appleseed</span>
+          <div id="outputCardDate">
+            <span id="outputCardMonth">00</span>/<span id="outputCardYear">00</span>
+          </div>
+        </div>
+        <div class="container-card-back">
+          <p id="outputCardCvc">000</p>
+        </div>
+      </div>
+      <div class="container-form">
+        <form id="cardForm" method="post">
+          <div class="form-control">
+            <label for="cardName">Cardholder Name</label>
+            <input type="text" name="cardName" id="cardName" placeholder="e.g. Jane Appleseed"
+              onKeyPress="if(this.value.length==50) return false;"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]+/g, ' ')">
+            <div class=" error-messages" id="cardName-error">
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" name="cardNumber" id="cardNumber" placeholder="e.g. 1234 5678 9123 0000"
+              onKeyPress="if(this.value.length==16) return false;"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+            <div class="error-messages" id="cardNumber-error"></div>
+          </div>
+          <div class="form-control">
+            <div class="form-bottom">
+              <div class="form-bottom-date">
+                <label for="cardMonth">EXP. Date (MM/YY)</label>
+                <div class="form-bottom-date-inputs">
+                  <div>
+                    <input type="text" name="cardMonth" id="cardMonth" placeholder="MM"
+                      onKeyPress="if(this.value.length==2) return false;"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <div class="error-messages" id="cardMonth-error"></div>
+                  </div>
+                  <div>
+                    <input type="text" name="cardYear" id="cardYear" placeholder="YY"
+                      onKeyPress="if(this.value.length==2) return false;"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <div class="error-messages" id="cardYear-error"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-bottom-cvc">
+                <label for="cardCvc">CVC</label>
+                <input type="text" name="cardCvc" id="cardCvc" placeholder="e.g. 123"
+                  onKeyPress="if(this.value.length==3) return false;"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                <div class="error-messages" id="cardCvc-error"></div>
+              </div>
+            </div>
+          </div>
+          <button class="submit-btn" type="submit">Confirm</button>
+        </form>
+        <div style="display: none;" class="complete-state">
+          <div>
+            <img src="images/icon-complete.svg" alt="icon complete">
+          </div>
+          <div class="complete-state-title">THANK YOU!</div>
+          <div class="complete-state-description">We've added your card details.</div>
+          <button id="btn-continue" class="submit-btn">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

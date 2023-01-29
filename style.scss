@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: inherit;
+}
+
+.main {
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  background-color: #ffffff;
+  max-width: 1440px;
+  height: 100%;
+
+  &-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 50%;
+    height: 100%;
+    background: url(images/bg-main-desktop.png) no-repeat;
+    background-size: 70% 100%;
+
+    &-front {
+      min-width: 447px;
+      min-height: 245px;
+      padding: 2rem;
+      background: url(images/bg-card-front.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      filter: drop-shadow(0px 0px 22px rgba(0, 0, 0, 0.4));
+    }
+
+    &-back {
+      margin-left: 10vw;
+      min-width: 447px;
+      min-height: 245px;
+      padding: 2rem;
+      background: url(images/bg-card-back.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      filter: drop-shadow(0px 0px 22px rgba(0, 0, 0, 0.4));
+    }
+  }
+
+  &-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+}
+
+.mobile-bg {
+  display: none;
+}
+
+#outputCardNumber {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 32px;
+  color: #ffffff;
+  position: absolute;
+  top: 54%;
+  left: 7%;
+  letter-spacing: 2px;
+}
+
+#outputCardName {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: absolute;
+  top: 80%;
+  left: 7%;
+  letter-spacing: 3px;
+}
+
+#outputCardDate {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: absolute;
+  top: 80%;
+  left: 81%;
+  letter-spacing: 3px;
+}
+
+#outputCardCvc {
+  font-family: "Space Grotesk", sans-serif;
+  color: #ffffff;
+  position: absolute;
+  top: 45%;
+  left: 80%;
+}
+
+#cardForm {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.form-control {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+
+  label {
+    display: inline-block;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  input {
+    display: block;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid hsl(270, 3%, 87%);
+    margin-bottom: 0.5rem;
+    width: 100%;
+
+    &::placeholder {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      color: hsl(270, 3%, 87%);
+    }
+
+    &:focus-visible {
+      outline-color: hsl(249, 99%, 64%);
+    }
+  }
+
+  .error {
+    border: 1px solid hsl(0, 100%, 66%);
+  }
+
+  .error-messages {
+    position: absolute;
+    color: hsl(0, 100%, 66%);
+  }
+}
+
+.form-bottom {
+  display: flex;
+  gap: 1rem;
+
+  &-date {
+    flex-grow: 1;
+
+    &-inputs {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  &-cvc {
+    flex-grow: 2;
+  }
+}
+
+.submit-btn {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  background-color: hsl(278, 68%, 11%);
+  border: 1px solid hsl(278, 68%, 11%);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  display: block;
+  padding: 1rem 2rem;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.complete-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  &-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.5rem;
+  }
+
+  &-description {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+
+    &-card {
+      margin-bottom: 5rem;
+      width: 100%;
+      background: url(images/bg-main-mobile.png) no-repeat;
+      background-size: 100% 70%;
+      flex-direction: column-reverse;
+      &-front {
+        margin-top: -5rem;
+        z-index: 1;
+      }
+
+      &-back {
+        margin-top: 2.5rem;
+      }
+    }
+
+    &-form {
+      width: 100%;
+    }
+  }
+
+  .desktop-bg {
+    display: none;
+  }
+
+  .mobile-bg {
+    display: block;
+    width: 100%;
+    height: 380px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container-card {
+    margin-bottom: 0rem;
+
+    &-front {
+      margin-top: -10rem;
+      transform: scale(0.6);
+    }
+
+    &-back {
+      margin-top: 3rem;
+      transform: scale(0.6);
+    }
+  }
+
+  .container-form {
+    padding: 1rem;
+  }
+
+  .mobile-bg {
+    height: 220px;
+  }
+}
